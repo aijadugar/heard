@@ -37,7 +37,7 @@
 </p>
 
 <p align="center">
-  <a href="https://heard.dev">heard.dev</a>
+  <a href="https://heard.dev/?utm_source=github&amp;utm_medium=organic&amp;utm_campaign=readme">heard.dev</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/heardlabs/heard/releases/latest">Releases</a>
   &nbsp;·&nbsp;
@@ -84,7 +84,7 @@ You should not need to run a development daemon. If Heard ever starts with a sta
 | **Pro** | **All** cloud voices + personas, run for you | - | $15/mo |
 | **Power** | All cloud voices | **Yes** - hands-free voice control + built-in Wispr Flow-style dictation (push-to-talk & ambient voice typing) | $30/mo |
 
-**Free is the open-source path** - [clone this repo](#self-host-open-source) and run the engine with your own ElevenLabs / Anthropic keys or fully local Kokoro; no account, nothing through our cloud. The [downloadable app](https://heard.dev/download) is the **official closed build** - a native successor to this engine with the cloud voices and narration brain run for you; sign in and your plan decides what's on. The app is key-free by design, so a lapsed trial just goes quiet. **Power** adds hands-free voice control and built-in dictation - you talk to your agent and it acts, and you can voice-type anywhere your cursor is. [See pricing →](https://heard.dev/#pricing)
+**Free is the open-source path** - [clone this repo](#self-host-open-source) and run the engine with your own ElevenLabs / Anthropic keys or fully local Kokoro; no account, nothing through our cloud. The [downloadable app](https://heard.dev/download?utm_source=github&utm_medium=organic&utm_campaign=readme) is the **official closed build** - a native successor to this engine with the cloud voices and narration brain run for you; sign in and your plan decides what's on. The app is key-free by design, so a lapsed trial just goes quiet. **Power** adds hands-free voice control and built-in dictation - you talk to your agent and it acts, and you can voice-type anywhere your cursor is. [See pricing →](https://heard.dev/?utm_source=github&utm_medium=organic&utm_campaign=readme#pricing)
 
 Invite a friend and you both win: they start on a 30-day trial, and you get a free week of Pro for each friend who activates.
 
