@@ -123,7 +123,7 @@ Invite a friend and you both win: they get a 30-day Power trial, and you get a f
 - **Narrates with judgment, not transcription.** Heard decides what to say from context: what just ran, whether it's a decision moment or routine progress, what you've already heard. Not every tool call gets the same airtime.
 - **Three listening modes.** **Co-pilot** for screen-on work, short signposts. **Companion** for eyes-off (driving, cooking, walking), fuller briefings. **Focus** for alert-only, quiet unless something needs you.
 - **Every agent, one voice layer.** Claude Code and Codex through hooks, cloud agents through one MCP URL, all in the same spoken queue.
-- **Lives at the edge of your screen.** A soft light shows when Heard is listening, thinking or answering; the corners hold mute (bottom left) and Settings (bottom right).
+- **Out of your way.** Holding right ⌘ shows a small Listening pill; a soft light at the screen edge is Parrot's, shown while it listens, thinks or answers; the corners hold mute (bottom left) and Settings (bottom right).
 - **Your iPhone as a remote** *(Power)*. Pair by QR code, listen live, and reply by voice or tap.
 - **Four personas, fork-your-own.** Aria (calm, direct), Friday (bright, breezy), Jarvis (Marvel butler), Atlas (cinematic narrator).
 
@@ -140,7 +140,7 @@ In the app, Friday and Atlas need Pro or Power. In the open-source engine, fork 
 
 ## Listening modes
 
-In the app: **Settings → Voice → How you work**.
+In the app: **Settings → Jarvis → How you work**.
 
 | Mode | When | What you hear |
 |---|---|---|
@@ -156,7 +156,7 @@ In the app: **Settings → Voice → How you work**.
 
 ## Tuning
 
-In the app, voice, speed, tone and narration detail live in **Settings → Voice**; Pause and Mute are in the menu bar. Per-repo: drop `label: My Project` in a repo's `.heard.yaml` and Heard announces that project by the name you chose instead of the folder name.
+In the app, Jarvis's voice, tone and how much it says live in **Settings → Jarvis**; dictation and custom words in **Settings → Your voice**; Pause and Mute are in the menu bar. Per-repo: drop `label: My Project` in a repo's `.heard.yaml` and Heard announces that project by the name you chose instead of the folder name.
 
 In the open-source engine, `⇧⌥.` pauses and `⇧⌥,` resumes, and verbosity profiles and narration preferences live in `config.yaml` and `.heard.yaml`.
 
