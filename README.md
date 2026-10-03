@@ -63,6 +63,10 @@ Paste this into Claude Code, Codex, or any AI coding tool:
 
 Download [`Heard.dmg`](https://heard.dev/download/manual?format=dmg), drag `Heard.app` into `/Applications`, and open it. Setup walks you through sign-in, permissions and your voice.
 
+## Works in every terminal
+
+Heard listens to your agent, not your terminal, so narration works wherever the agent runs: **Ghostty, Herdr, cmux, iTerm2, Terminal, Warp, WezTerm, tmux, VS Code, Cursor, Windsurf, Zed**. Heard also knows where each session lives, so a jump back lands on the exact Ghostty terminal or tmux pane, or the right iTerm2 or Terminal window.
+
 ## Cloud agents: Grok Bot, Muse and friends
 
 Agents that live in the cloud can't reach your Mac, so they report to Heard instead. Add **one remote MCP server** to the agent, `https://api.heard.dev/v1/mcp/agent`, and its progress, questions and results are spoken on your Mac like any local session, named after the agent: *"Scout finished: …"*, *"Muse needs you: …"*.
@@ -217,7 +221,7 @@ The engine in this repo is Apache 2.0. The easiest places to contribute are adap
 
 ## Compatibility
 
-**App:** macOS 14+ · Claude Code and Codex first-class · hooks for Cursor, GitHub Copilot CLI, Gemini CLI, Qwen Code, Kimi, Antigravity, OpenCode, Pi and Hermes · cloud agents through one MCP URL (Grok Bot, Meta Muse, Devin, Copilot coding agent, Manus, ChatGPT, Claude, Cursor, and any MCP-capable agent).
+**App:** macOS 14+ · any terminal (Ghostty, Herdr, cmux, iTerm2, Terminal, Warp, WezTerm, tmux, VS Code, Cursor, Windsurf, Zed) · Claude Code and Codex first-class · hooks for Cursor, GitHub Copilot CLI, Gemini CLI, Qwen Code, Kimi, Antigravity, OpenCode, Pi and Hermes · cloud agents through one MCP URL (Grok Bot, Meta Muse, Devin, Copilot coding agent, Manus, ChatGPT, Claude, Cursor, and any MCP-capable agent).
 
 **Open-source engine:** macOS · Claude Code, Codex CLI and Codex app adapters · anything else through `heard run`.
 
