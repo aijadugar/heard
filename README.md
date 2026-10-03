@@ -44,11 +44,10 @@
 
 <br/>
 
-## See it run
+## See and hear it run
+🔊 Turn sound on for demo
 
-Heard 2.0: talk to an agent, follow several at once, approve a release from your phone, and pick up where you left off on the go.
-
-https://github.com/user-attachments/assets/ae9816b1-f00f-4876-ab25-b23ed6870a9c
+https://github.com/user-attachments/assets/d823a946-fb6f-438b-904f-aa66d4268ed1
 
 ## Get the app
 
