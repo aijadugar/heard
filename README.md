@@ -71,12 +71,16 @@ Heard listens to your agent, not your terminal, so narration works wherever the 
 
 Agents that live in the cloud can't reach your Mac, so they report to Heard instead. Add **one remote MCP server** to the agent, `https://api.heard.dev/v1/mcp/agent`, and its progress, questions and results are spoken on your Mac like any local session, named after the agent: *"Scout finished: …"*, *"Muse needs you: …"*.
 
-| Connects with | Agents |
+| In Settings | Agents |
 |---|---|
-| **Authorize** (sign in with your Heard email) | Grok Bot, ChatGPT, Claude, Cursor, OpenAI Dots, Claude Code or Codex on another machine |
-| **Token** (created in Heard) | Meta Muse, Devin, GitHub Copilot coding agent, Manus, Instinct, any other MCP-capable agent |
+| **Authorize** (sign in with your Heard email) | Grok Bot, ChatGPT, Claude |
+| **Token** (created in Heard) | Meta Muse, Devin, GitHub Copilot coding agent, Manus |
 
-Set it up in **Settings → Connections → Cloud agents**: each agent has numbered steps and the exact text to paste, each with a Copy button. You can also use the bundled CLI: `/Applications/Heard.app/Contents/MacOS/heard-board connect <agent>`.
+Set these up in **Settings → Connections → Cloud agents**: each agent has numbered steps and the exact text to paste, each with a Copy button. More agents connect the same way through the CLI bundled with the app: Cursor, Instinct, OpenAI Dots, Claude Code or Codex running on another machine, or any other MCP-capable agent:
+
+```bash
+/Applications/Heard.app/Contents/MacOS/heard-board connect <agent>
+```
 
 **Talk back** *(Power)*: hold right ⌘ and start with the agent's name, *"Muse, summarize my inbox"*. Heard queues the message in that agent's **Heard inbox**, the agent picks it up with the `heard_inbox` tool between steps, and Heard tells you when it did. Or ask Parrot: *"Hey Parrot, tell Scout to rerun the tests."*
 
