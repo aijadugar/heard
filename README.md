@@ -5,19 +5,15 @@
   </picture>
 </p>
 
-<h2 align="center">Your coding agent has a voice now.</h2>
+<h2 align="center">Your agents have a voice now.</h2>
 
 <p align="center">
-  Heard speaks your coding agent's outputs so you can get up, walk around, and still know what's going on.
-  <br/>Think <b>Jarvis for your coding agents</b> — a voice layer for Claude Code, Codex, OpenClaw, Hermes, and any AI workflow: your agent narrates its work out loud, you talk back hands-free.
+  Heard is the voice layer for AI agents on your Mac. Your coding agents and your cloud agents tell you what they did, what broke and what they need, out loud, so you can step away and still know what's going on.
+  <br/>Think <b>Jarvis for your agents</b>: Claude Code, Codex, and cloud agents like <b>Grok Bot</b>, <b>Meta Muse</b>, Devin, Manus and ChatGPT report to you by voice, and on Power you talk back.
 </p>
 
 <p align="center">
-  <sub>Pairs with — or replaces — input tools like <a href="https://wisprflow.ai">Wispr Flow</a>: on <b>Power</b>, Wispr Flow-style <b>dictation</b> is built in (push-to-talk + ambient voice typing, on-device speech-to-text), and Heard speaks everything your agent says back.</sub>
-</p>
-
-<p align="center">
-  <sub>Comparing macOS coding-agent notification tools? Heard covers the notifier basics — you hear it when Claude Code or Codex finishes, fails, or needs approval — then goes past them: text-to-speech for the work itself, narrating progress, questions, and results across parallel sessions.</sub>
+  <sub>Comparing macOS coding-agent notification tools? Heard covers the basics (you hear it when Claude Code or Codex finishes, fails or needs approval), then goes further: spoken summaries of the work itself, across every session and every agent.</sub>
 </p>
 
 <p align="center">
@@ -55,7 +51,7 @@ https://github.com/user-attachments/assets/d823a946-fb6f-438b-904f-aa66d4268ed1
 
 ## Get the app
 
-The app is the **managed** experience: download, sign in, and you're narrating - Heard runs the cloud voices and the narration brain for you, no keys to manage. Prefer to run it yourself with your own keys? See [Self-host](#self-host-open-source).
+The app is the **managed** experience: download, sign in, and you're narrating. Heard runs the cloud voices and the narration brain for you, with no keys to manage. Every new account starts with a 14-day Power trial, no card required. Prefer to run it yourself with your own keys? See [Self-host](#self-host-open-source).
 
 ### Have your coding tool install it (recommended)
 
@@ -65,53 +61,62 @@ Paste this into Claude Code, Codex, or any AI coding tool:
 
 ### Manual
 
-Download the latest [`Heard.zip`](https://heard.dev/download/manual?format=zip), drag `Heard.app` into `/Applications`, double-click to launch. Onboarding walks you through sign-in, permissions, and your voice.
+Download [`Heard.dmg`](https://heard.dev/download/manual?format=dmg), drag `Heard.app` into `/Applications`, and open it. Setup walks you through sign-in, permissions and your voice.
 
-### Codex
+## Cloud agents: Grok Bot, Muse and friends
 
-Heard supports both **Codex CLI** and **Codex App**.
+Agents that live in the cloud can't reach your Mac, so they report to Heard instead. Add **one remote MCP server** to the agent, `https://api.heard.dev/v1/mcp/agent`, and its progress, questions and results are spoken on your Mac like any local session, named after the agent: *"Scout finished: …"*, *"Muse needs you: …"*.
 
-- **Codex CLI:** turn on Codex in Heard, then open Codex CLI, type `/hooks`, and trust the Heard hooks.
-- **Codex App:** keep Heard running from the menu bar. Heard watches Codex Desktop's local session log and narrates new app activity automatically once Codex is enabled.
+| Connects with | Agents |
+|---|---|
+| **Authorize** (sign in with your Heard email) | Grok Bot, ChatGPT, Claude, Cursor, OpenAI Dots, Claude Code or Codex on another machine |
+| **Token** (created in Heard) | Meta Muse, Devin, GitHub Copilot coding agent, Manus, Instinct, any other MCP-capable agent |
 
-You should not need to run a development daemon. If Heard ever starts with a stale daemon socket or pid file, the app now cleans that up on launch.
+Set it up in **Settings → Connections → Cloud agents**: each agent has numbered steps and the exact text to paste, each with a Copy button. You can also use the bundled CLI: `/Applications/Heard.app/Contents/MacOS/heard-board connect <agent>`.
+
+**Talk back** *(Power)*: hold right ⌘ and start with the agent's name, *"Muse, summarize my inbox"*. Heard queues the message in that agent's **Heard inbox**, the agent picks it up with the `heard_inbox` tool between steps, and Heard tells you when it did. Or ask Parrot: *"Hey Parrot, tell Scout to rerun the tests."*
+
+Cloud agents need a signed-in Heard account. Their reports pass through Heard's servers on the way to your Mac.
+
+## Parrot *(Power)*
+
+Say **"Hey Parrot"** and talk to it. Parrot knows your projects and every connected agent, local or cloud:
+
+- **"Catch me up."** A fresh spoken recap of what landed, what's still running and what needs you, across all your agents.
+- **Ask anything** about your projects, your agents, or what changed while you were away.
+- **Hand off work.** Message an agent by name, or open a project in the right terminal or editor.
+- **Remembers you.** Keeps what you tell it about yourself and your work; see or remove it in Settings → Parrot.
+- **Looks at your screen** when you ask it to (needs Screen Recording permission).
+
+## Voice in *(Power)*
+
+- **Push to talk**: hold right ⌘ to talk to an agent, or to dictate into whatever you're typing in, in any app.
+- **Hands-free dictation**: double-press right ⌘ and talk without holding it; tap once to send.
+- **On-device speech-to-text**: transcription runs on your Mac.
+- **Call-aware**: Heard stays quiet while you're on a Zoom, Meet, Teams, Slack, Discord or FaceTime call.
+
+So on Power, Heard is the full voice loop: you speak, your agents do the work, Heard tells you how it went.
 
 ## Plans
 
-| | Voices | Talk back | Price |
+| | Voices | Voice in, Parrot, iPhone | Price |
 |---|---|---|---|
-| **Free** — self-host: build from this repo | **Local only** — Kokoro or your own keys, zero cloud | - | Free |
-| **Pro** | **All** cloud voices + personas, run for you | - | $15/mo |
-| **Power** | All cloud voices | **Yes** - hands-free voice control + built-in Wispr Flow-style dictation (push-to-talk & ambient voice typing) | $30/mo |
+| **Free** (self-host: build from this repo) | **Local only**: Kokoro or your own keys, nothing through our cloud | - | Free |
+| **Pro** | Cloud voices and all four personas, up to 1M characters a day | - | $15/mo |
+| **Power** | Cloud voices, up to 2M characters a day | **Yes**: push to talk, hands-free dictation, Parrot, iPhone companion | $30/mo |
 
-**Free is the open-source path** - [clone this repo](#self-host-open-source) and run the engine with your own ElevenLabs / Anthropic keys or fully local Kokoro; no account, nothing through our cloud. The [downloadable app](https://heard.dev/download?utm_source=github&utm_medium=organic&utm_campaign=readme) is the **official closed build** - a native successor to this engine with the cloud voices and narration brain run for you; sign in and your plan decides what's on. The app is key-free by design, so a lapsed trial just goes quiet. **Power** adds hands-free voice control and built-in dictation - you talk to your agent and it acts, and you can voice-type anywhere your cursor is. [See pricing →](https://heard.dev/?utm_source=github&utm_medium=organic&utm_campaign=readme#pricing)
+**Free is the open-source path**: [clone this repo](#self-host-open-source) and run the engine with your own ElevenLabs / Anthropic keys or fully local Kokoro; no account, nothing through our cloud. The [downloadable app](https://heard.dev/download?utm_source=github&utm_medium=organic&utm_campaign=readme) is the **official closed build**, a native successor to this engine with the cloud voices and narration brain run for you; sign in and your plan decides what's on. The app is key-free by design, so when a trial ends without a plan it goes quiet. [See pricing →](https://heard.dev/?utm_source=github&utm_medium=organic&utm_campaign=readme#pricing)
 
-Invite a friend and you both win: they start on a 30-day trial, and you get a free week of Pro for each friend who activates.
-
-## Your Jarvis moment
-
-Every AI workflow deserves a voice. Heard is the **voice layer**: a Jarvis-style narrator (that's literally our default voice's name) that turns your agent's stream of tool calls and replies into spoken updates — and on Power, listens back, so you converse with your agent like Tony Stark talks to Jarvis. First-class with Claude Code, Codex CLI, and the Codex app today — and it rides along anywhere those agents run (OpenClaw, Hermes Agent, your own stack), with `heard run` wrapping anything else.
-
-## Built-in dictation on Power — Wispr Flow style
-
-Power ships with **Heard Whisper**, a built-in dictation and voice-typing tool in the spirit of Wispr Flow, Superwhisper, and macOS dictation — but wired straight into your coding agent:
-
-- **Push-to-talk**: hold Right-⌘, speak, release — your words are transcribed and typed at your cursor, in any app.
-- **Ambient mode**: always-on, hands-free voice input with voice-activity detection — talk naturally, interrupt Heard mid-sentence (real echo cancellation), and it types or acts as you go.
-- **On-device speech-to-text**: transcription runs locally on your Mac — fast, accurate, private; no audio leaves your machine.
-- **Call-aware**: joins a Zoom/Meet/Teams call and ambient input pauses itself, then resumes after.
-
-So on Power, Heard is the full voice loop: speech-to-text in, agent does the work, text-to-speech out.
+Invite a friend and you both win: they get a 30-day Power trial, and you get a free month of Pro once they've used Heard for real.
 
 ## What it does
 
-- **Narrates with judgment, not just transcription.** Heard decides what to say based on context - your recent activity, what tool just ran, whether something is a decision moment or routine progress. Not every tool call gets the same airtime.
-- **Three listening modes you switch between.** **Co-pilot** for screen-on work - short hooks and signposts. **Companion** for eyes-off (driving, cooking, walking) - fuller briefings that name the choice and surface the decision. **Focus** for alert-only use - quiet unless something needs your attention.
-- **Multi-agent aware.** Run 3+ agents in parallel; Heard voices the most salient one and quietly summarises the others. Each is named when the speaker changes, so you can tell them apart by ear.
-- **Talk back, hands-free *(Power)*.** Not just listening - reply out loud and your agent acts on it. Approve a step, answer a prompt, or redirect it without touching the keyboard.
-- **"Catch me up" *(Power)*.** Step away, come back, and ask your coding companion what you missed - Heard speaks a fresh recap of exactly the window you were gone: what landed, what's still running, what's waiting on you. "Catch me up on everything" sweeps all your active projects at once, mission by mission.
+- **Narrates with judgment, not transcription.** Heard decides what to say from context: what just ran, whether it's a decision moment or routine progress, what you've already heard. Not every tool call gets the same airtime.
+- **Three listening modes.** **Co-pilot** for screen-on work, short signposts. **Companion** for eyes-off (driving, cooking, walking), fuller briefings. **Focus** for alert-only, quiet unless something needs you.
+- **Every agent, one voice layer.** Local coding agents through hooks, cloud agents through one MCP URL, all in the same spoken queue.
+- **Lives at the edge of your screen.** A soft light shows when Heard is listening, thinking or answering; the corners hold mute (bottom left) and Settings (bottom right).
+- **Your iPhone as a remote** *(Power)*. Pair by QR code, listen live, and reply by voice or tap.
 - **Four personas, fork-your-own.** Aria (calm, direct), Friday (bright, breezy), Jarvis (Marvel butler), Atlas (cinematic narrator).
-- **Works with any coding CLI.** First-class adapters for Claude Code, Codex CLI, and Codex App; `heard run <command>` wraps anything else.
 
 ## Personas
 
@@ -122,33 +127,33 @@ So on Power, Heard is the full voice loop: speech-to-text in, agent does the wor
 | **jarvis** | Marvel JARVIS-coded butler. Dry wit, "Sir" only on summaries. |
 | **atlas** | Cinematic narrator. Greek tragedy applied to compile cycles. |
 
-Fork your own - drop a Markdown file with frontmatter into `~/Library/Application Support/heard/personas/`.
+In the app, Friday and Atlas need Pro or Power. In the open-source engine, fork your own: drop a Markdown file with frontmatter into `~/Library/Application Support/heard/personas/`.
 
 ## Listening modes
 
-Switch from the menu bar → Mode.
+In the app: **Settings → Voice → How you work**.
 
 | Mode | When | What you hear |
 |---|---|---|
 | **Co-pilot** *(default)* | At the screen, coding | Short hooks and signposts. Routine tool churn gets a one-liner; decisions and finals get fuller narration. The details live in the diff you can read. |
-| **Companion** | Hands-off - driving, cooking, walking | Lean but substantive briefings. State the choice, surface the decision, plain English over developer-speak, every turn ends with a hook into action. |
-| **Focus** | Focused elsewhere, but reachable | Alert-only. Speaks for approvals, blockers, failures, and decisions that are waiting on you; routine progress and normal finals stay quiet. |
+| **Companion** | Hands-off: driving, cooking, walking | Lean but substantive briefings. State the choice, surface the decision, plain English over developer-speak. |
+| **Focus** | Focused elsewhere, but reachable | Alert-only. Speaks for approvals, blockers, failures and decisions waiting on you; routine progress stays quiet. |
 
 ## Running multiple agents
 
-Heard's brain handles cross-agent salience automatically - when 2+ sessions are firing, the one with the most salient signal (blocked, decision moment, failure) gets voiced; the others get summarised. When the speaker changes, the line starts with the session's name so you can tell them apart by ear. Prefer a distinct voice per project? Set `multi_agent_auto_voices: true` in `config.yaml` (uses ElevenLabs voices), or map repos to voice IDs with `agent_voices`.
+**In the app:** with two or more sessions running, questions, failures and results still come through as they happen, while routine activity is batched into short summaries that start with the project name (*"Api: three edits and a search."*). Cloud agents are always named. Drop `label: My Project` in a repo's `.heard.yaml` to choose the spoken name.
 
-Pin a specific session if you want to focus: menu bar → Active agents → click one. Click again to unpin.
+**In the open-source engine:** the session with the most salient signal (blocked, decision moment, failure) gets voiced and the others get summarised. When the speaker changes, the line starts with the session's name. Prefer a distinct voice per project? Set `multi_agent_auto_voices: true` in `config.yaml` (uses ElevenLabs voices), or map repos to voice IDs with `agent_voices`.
 
 ## Tuning
 
-The basics - persona, voice, speed, mode, pause/resume - all live in the menu bar. Hotkeys: ⇧⌥. to pause, ⇧⌥, to resume.
+In the app, voice, speed, tone and narration detail live in **Settings → Voice**; Pause and Mute are in the menu bar. Per-repo: drop `label: My Project` in a repo's `.heard.yaml` and Heard announces that project by the name you chose instead of the folder name.
 
-Deeper knobs (verbosity profiles, per-repo overrides, narration preferences) live in Settings or `.heard.yaml`. Handy one: drop `label: My Project` in a repo's `.heard.yaml` and the voice announces that project by the name you chose instead of the folder name. Most users never need to touch the rest - Heard's listening modes cover the common cases on their own.
+In the open-source engine, `⇧⌥.` pauses and `⇧⌥,` resumes, and verbosity profiles and narration preferences live in `config.yaml` and `.heard.yaml`.
 
 ## Self-host (open source)
 
-Heard is Apache-2.0. The packaged app above is the managed experience; if you'd rather run it from source - your own keys, no account, full control - clone and configure it:
+Heard is Apache-2.0. The packaged app above is the managed experience; if you'd rather run it from source (your own keys, no account, full control), clone and configure it:
 
 ```bash
 git clone https://github.com/heardlabs/heard.git
@@ -165,23 +170,31 @@ heard config set anthropic_api_key <your-key>    # narration brain (skip → neu
 heard install claude-code        # also: codex-cli, codex-app
 ```
 
-That's the DIY path: you own keys, updates, and config. Everything's configurable (personas in `heard/personas/*.md`, verbosity in `heard/profiles/*.yaml`, per-repo `.heard.yaml`). The managed tiers are the same engine with the voices + brain run for you.
+That's the DIY path: you own keys, updates and config. Everything's configurable (personas in `heard/personas/*.md`, verbosity in `heard/profiles/*.yaml`, per-repo `.heard.yaml`), and `heard run <command>` wraps any other CLI. The cloud-agent connectors and Parrot are app features.
 
 ## FAQ
 
 <details>
-<summary><b>How do I catch up on what Claude Code did while I was away?</b></summary>
+<summary><b>How do I catch up on what my agents did while I was away?</b></summary>
 
-Say **"catch me up"** (or "what did I miss?") and Heard speaks a fresh recap of your away window: what each agent finished, what's still running, and what needs you. **"Catch me up on everything"** covers all active projects at once. It re-summarizes rather than replaying old narration, so hours away come back as a few sentences - the pull half of an AI pair programmer that talks. *(Power)*
+Say **"Hey Parrot, catch me up"** (or "what have I been working on?") and Heard speaks a fresh recap of your away window: what each agent finished, what's still running and what needs you, local and cloud agents alike. It re-summarizes rather than replaying old narration, so hours away come back as a few sentences. *(Power)*
+</details>
+
+<details>
+<summary><b>How do I hear Grok Bot or Meta Muse?</b></summary>
+
+Open **Settings → Connections → Cloud agents**, pick the agent and follow its steps: add `https://api.heard.dev/v1/mcp/agent` as a remote MCP server, then Authorize (Grok Bot) or paste the token Heard creates (Muse). From then on the agent's reports are spoken on your Mac, and on Power you can talk back by starting with its name.
 </details>
 
 <details>
 <summary><b>Does my agent's output leave my machine?</b></summary>
 
-Depends on which backends you opt into.
+Depends on what you use.
 
-- **Voice synth.** ElevenLabs and Speechify send spoken text over HTTPS. **Kokoro** runs fully locally - nothing leaves the machine.
-- **Narration.** Heard sends compact event summaries (what tool ran, the agent's response text, recent context) to the Heard narration brain - a fast LLM pass that decides what to say and shapes it in your persona's voice. Either through your own Anthropic key, through Heard's managed proxy if you're signed in, or - with no key and no sign-in - falls back to neutral templates locally.
+- **Voice synth.** ElevenLabs and Speechify send spoken text over HTTPS. **Kokoro** runs fully locally.
+- **Narration.** Heard sends compact event summaries (what tool ran, the agent's response text, recent context) to the Heard narration brain, a fast LLM pass that decides what to say. In the open-source engine that's your own Anthropic key, or neutral local templates with no key.
+- **Speech-to-text** for push to talk and dictation runs on your Mac.
+- **Cloud agents** send their reports to Heard's relay, which your Mac picks up while you're signed in.
 </details>
 
 <details>
@@ -193,22 +206,24 @@ The free tier covers light daily use. A heavy day of pair-programming (2-3 hrs o
 <details>
 <summary><b>Will narration slow down my agent?</b></summary>
 
-No. Hooks fire-and-forget over a Unix socket; the daemon synthesises and plays asynchronously. Your agent never blocks on Heard.
+No. Hooks hand events off and return immediately; speech is synthesized and played asynchronously. Your agent never blocks on Heard.
 </details>
 
 <details>
 <summary><b>Is this open source? How do I contribute?</b></summary>
 
-Yes - Apache 2.0. The easiest places to contribute are adapters (`heard/adapters/`), personas (`heard/personas/*.md`), and verbosity profiles (`heard/profiles/*.yaml`).
+The engine in this repo is Apache 2.0. The easiest places to contribute are adapters (`heard/adapters/`), personas (`heard/personas/*.md`) and verbosity profiles (`heard/profiles/*.yaml`). The macOS app is a closed, managed build.
 </details>
 
 ## Compatibility
 
-macOS 14+ · Claude Code + Codex CLI/App first-class · Cursor and Aider planned · anything else via `heard run`.
+**App:** macOS 14+ · Claude Code and Codex first-class · hooks for Cursor, GitHub Copilot CLI, Gemini CLI, Qwen Code, Kimi, Antigravity, OpenCode, Pi and Hermes · cloud agents through one MCP URL (Grok Bot, Meta Muse, Devin, Copilot coding agent, Manus, ChatGPT, Claude, Cursor, and any MCP-capable agent).
+
+**Open-source engine:** macOS · Claude Code, Codex CLI and Codex app adapters · anything else through `heard run`.
 
 ## Status
 
-**Releases on this repo are the official closed app** (the download surface); this open-source engine is built from source — see [Self-host](#self-host-open-source). Engine status: cross-event-judgment narration via the Heard brain (each meaningful event is judged against your recent context and the active agents before anything is said). Co-pilot / Companion / Focus listening modes, multi-agent salience with a distinct per-window voice each, hands-free voice control on Power, and automatic failover across ElevenLabs / Speechify / local Kokoro. First-class Claude Code, Codex CLI, and Codex App adapters. Used daily by the author. Backward-compatible API surface; deeper knobs may move into preferences over time.
+**Releases on this repo are the official closed app** (the download surface); this open-source engine is built from source, see [Self-host](#self-host-open-source). The current app is **Heard 2.0**: rebuilt as a native app, with cloud-agent connectors, Parrot, push to talk and hands-free dictation, and the edge light that replaced the notch. The engine here keeps judgment-based narration, the three listening modes, multi-agent narration, and automatic failover across ElevenLabs, Speechify and local Kokoro. Used daily by the author.
 
 ## License
 
