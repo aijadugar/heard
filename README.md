@@ -107,7 +107,7 @@ So on Power, Heard is the full voice loop: speech-to-text in, agent does the wor
 
 - **Narrates with judgment, not just transcription.** Heard decides what to say based on context - your recent activity, what tool just ran, whether something is a decision moment or routine progress. Not every tool call gets the same airtime.
 - **Three listening modes you switch between.** **Co-pilot** for screen-on work - short hooks and signposts. **Companion** for eyes-off (driving, cooking, walking) - fuller briefings that name the choice and surface the decision. **Focus** for alert-only use - quiet unless something needs your attention.
-- **Multi-agent aware.** Run 3+ agents in parallel; Heard voices the most salient one and quietly summarises the others. Each gets a distinct voice so you can tell them apart by ear.
+- **Multi-agent aware.** Run 3+ agents in parallel; Heard voices the most salient one and quietly summarises the others. Each is named when the speaker changes, so you can tell them apart by ear.
 - **Talk back, hands-free *(Power)*.** Not just listening - reply out loud and your agent acts on it. Approve a step, answer a prompt, or redirect it without touching the keyboard.
 - **"Catch me up" *(Power)*.** Step away, come back, and ask your coding companion what you missed - Heard speaks a fresh recap of exactly the window you were gone: what landed, what's still running, what's waiting on you. "Catch me up on everything" sweeps all your active projects at once, mission by mission.
 - **Four personas, fork-your-own.** Aria (calm, direct), Friday (bright, breezy), Jarvis (Marvel butler), Atlas (cinematic narrator).
@@ -136,7 +136,7 @@ Switch from the menu bar → Mode.
 
 ## Running multiple agents
 
-Heard's brain handles cross-agent salience automatically - when 2+ sessions are firing, the one with the most salient signal (blocked, decision moment, failure) gets voiced; the others get summarised. Each session is given a distinct voice so you can tell them apart by ear.
+Heard's brain handles cross-agent salience automatically - when 2+ sessions are firing, the one with the most salient signal (blocked, decision moment, failure) gets voiced; the others get summarised. When the speaker changes, the line starts with the session's name so you can tell them apart by ear. Prefer a distinct voice per project? Set `multi_agent_auto_voices: true` in `config.yaml` (uses ElevenLabs voices), or map repos to voice IDs with `agent_voices`.
 
 Pin a specific session if you want to focus: menu bar → Active agents → click one. Click again to unpin.
 
