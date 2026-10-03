@@ -121,7 +121,7 @@ Invite a friend and you both win: they get a 30-day Power trial, and you get a f
 
 - **Narrates with judgment, not transcription.** Heard decides what to say from context: what just ran, whether it's a decision moment or routine progress, what you've already heard. Not every tool call gets the same airtime.
 - **Three listening modes.** **Co-pilot** for screen-on work, short signposts. **Companion** for eyes-off (driving, cooking, walking), fuller briefings. **Focus** for alert-only, quiet unless something needs you.
-- **Every agent, one voice layer.** Local coding agents through hooks, cloud agents through one MCP URL, all in the same spoken queue.
+- **Every agent, one voice layer.** Claude Code and Codex through hooks, cloud agents through one MCP URL, all in the same spoken queue.
 - **Lives at the edge of your screen.** A soft light shows when Heard is listening, thinking or answering; the corners hold mute (bottom left) and Settings (bottom right).
 - **Your iPhone as a remote** *(Power)*. Pair by QR code, listen live, and reply by voice or tap.
 - **Four personas, fork-your-own.** Aria (calm, direct), Friday (bright, breezy), Jarvis (Marvel butler), Atlas (cinematic narrator).
@@ -225,7 +225,7 @@ The engine in this repo is Apache 2.0. The easiest places to contribute are adap
 
 ## Compatibility
 
-**App:** macOS 14+ · any terminal (Ghostty, Herdr, cmux, iTerm2, Terminal, Warp, WezTerm, tmux, VS Code, Cursor, Windsurf, Zed) · Claude Code and Codex first-class · hooks for Cursor, GitHub Copilot CLI, Gemini CLI, Qwen Code, Kimi, Antigravity, OpenCode, Pi and Hermes · cloud agents through one MCP URL (Grok Bot, Meta Muse, Devin, Copilot coding agent, Manus, ChatGPT, Claude, Cursor, and any MCP-capable agent).
+**App:** macOS 14+ · any terminal (Ghostty, Herdr, cmux, iTerm2, Terminal, Warp, WezTerm, tmux, VS Code, Cursor, Windsurf, Zed) · **narrated:** Claude Code and Codex CLI · **session status and approvals:** Cursor, GitHub Copilot CLI, Gemini CLI, Qwen Code, Kimi, Antigravity, OpenCode, Pi and Hermes · **cloud agents** through one MCP URL (Grok Bot, Meta Muse, Devin, Copilot coding agent, Manus, ChatGPT, Claude, Cursor, and any MCP-capable agent).
 
 **Open-source engine:** macOS · Claude Code, Codex CLI and Codex app adapters · anything else through `heard run`.
 
