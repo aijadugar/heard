@@ -17,9 +17,10 @@ from pathlib import Path
 
 _IS_DARWIN = sys.platform == "darwin"
 
+LABEL = "dev.heard.daemon"
+
 if _IS_DARWIN:
     LAUNCH_AGENTS_DIR = Path.home() / "Library" / "LaunchAgents"
-    LABEL = "dev.heard.daemon"
     PLIST_PATH = LAUNCH_AGENTS_DIR / f"{LABEL}.plist"
 
 

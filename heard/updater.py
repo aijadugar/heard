@@ -125,7 +125,12 @@ def resolved_current_version() -> str:
     try:
         import sys
         exe = sys.executable or ""
-        if ".app" in exe and "/Contents/MacOS/" in exe:
+        # Match .app bundle paths on both macOS (/Contents/MacOS/) and
+        # Windows (\Contents\MacOS\) — the test on Windows uses forward
+        # slashes in the mocked sys.executable, but real Windows builds
+        # use backslashes. Normalize to forward slashes for the check.
+        exe_norm = exe.replace("\\", "/")
+        if ".app" in exe_norm and "/Contents/MacOS/" in exe_norm:
             import plistlib
             from pathlib import Path
             plist = Path(exe).resolve().parents[1] / "Info.plist"
@@ -468,6 +473,7 @@ def unzip_app(zip_path: Path, staging_dir: Path) -> Path:
 
     # Zip-slip + layout validation, up front, before touching the disk.
     staging_resolved = staging_dir.resolve()
+    import zipfile
     try:
         with zipfile.ZipFile(zip_path) as zf:
             names = zf.namelist()
@@ -492,15 +498,25 @@ def unzip_app(zip_path: Path, staging_dir: Path) -> Path:
     if staged.exists():
         # rm -rf via shell — Python's shutil.rmtree blows up on macOS
         # bundles with broken symlinks inside the Frameworks dir, which
-        # the py2app build is known to produce. /bin/rm -rf is the path
-        # the install script in the README uses for the same reason.
-        subprocess.run(["/bin/rm", "-rf", str(staged)], check=True)
+        # the py2app build is known to produce. Use a cross-platform
+        # approach: try shutil.rmtree first, fall back to rm -rf on POSIX.
+        try:
+            import shutil
+            shutil.rmtree(staged)
+        except Exception:
+            if sys.platform != "win32":
+                subprocess.run(["/bin/rm", "-rf", str(staged)], check=True)
+            else:
+                # On Windows, rmtree usually works; if it fails, it's a
+                # genuine error (locked file, etc.) so let it propagate.
+                raise
 
-    result = subprocess.run(
-        ["/usr/bin/unzip", "-o", "-q", str(zip_path), "-d", str(staging_dir)],
-        capture_output=True,
-        text=True,
-    )
+    # Use Python's zipfile instead of /usr/bin/unzip for cross-platform
+    # support (Windows doesn't have /usr/bin/unzip). The layout validation
+    # above already ensures the archive is safe, so we can extract directly.
+    import zipfile
+    with zipfile.ZipFile(zip_path) as zf:
+        zf.extractall(staging_dir)
     if result.returncode != 0:
         raise UpdateInstallError(
             f"unzip exited {result.returncode}: {result.stderr.strip() or 'unknown'}"

@@ -239,7 +239,11 @@ def test_stage_and_swap_writes_helper_without_spawning(_scratch):
         )
     popen.assert_not_called()
     assert helper.is_file()
-    assert helper.stat().st_mode & 0o111, "helper script must be executable"
+    # On Windows, POSIX executable bits don't exist (st_mode & 0o111 is 0),
+    # so only assert this on POSIX platforms.
+    import sys
+    if sys.platform != "win32":
+        assert helper.stat().st_mode & 0o111, "helper script must be executable"
     script = helper.read_text(encoding="utf-8")
     assert str(install_path) in script
     assert str(staged) in script
