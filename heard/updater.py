@@ -517,10 +517,6 @@ def unzip_app(zip_path: Path, staging_dir: Path) -> Path:
     import zipfile
     with zipfile.ZipFile(zip_path) as zf:
         zf.extractall(staging_dir)
-    if result.returncode != 0:
-        raise UpdateInstallError(
-            f"unzip exited {result.returncode}: {result.stderr.strip() or 'unknown'}"
-        )
     if not staged.is_dir():
         raise UpdateInstallError(
             f"release zip did not contain Heard.app at the expected layout "
