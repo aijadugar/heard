@@ -499,18 +499,15 @@ def unzip_app(zip_path: Path, staging_dir: Path) -> Path:
     if staged.exists():
         # rm -rf via shell — Python's shutil.rmtree blows up on macOS
         # bundles with broken symlinks inside the Frameworks dir, which
-        # the py2app build is known to produce. Use a cross-platform
-        # approach: try shutil.rmtree first, fall back to rm -rf on POSIX.
-        try:
+        # the py2app build is known to produce. /bin/rm -rf is the path
+        # the install script in the README uses for the same reason.
+        # On Windows, shutil.rmtree works fine. On macOS/Linux, use
+        # /bin/rm -rf directly to match the original behavior.
+        if sys.platform == "win32":
             import shutil
             shutil.rmtree(staged)
-        except Exception:
-            if sys.platform != "win32":
-                subprocess.run(["/bin/rm", "-rf", str(staged)], check=True)
-            else:
-                # On Windows, rmtree usually works; if it fails, it's a
-                # genuine error (locked file, etc.) so let it propagate.
-                raise
+        else:
+            subprocess.run(["/bin/rm", "-rf", str(staged)], check=True)
 
     if sys.platform == "darwin":
         # macOS: use /usr/bin/unzip to preserve executable bits and
@@ -526,6 +523,8 @@ def unzip_app(zip_path: Path, staging_dir: Path) -> Path:
             )
     else:
         raise UpdateInstallError("in-app updates are macOS-only")
+
+    if not staged.is_dir():
         raise UpdateInstallError(
             f"release zip did not contain Heard.app at the expected layout "
             f"(staging dir: {staging_dir})"
