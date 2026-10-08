@@ -41,6 +41,7 @@ import os
 import re
 import shlex
 import subprocess
+import sys
 import threading
 import time
 import urllib.error
@@ -511,13 +512,20 @@ def unzip_app(zip_path: Path, staging_dir: Path) -> Path:
                 # genuine error (locked file, etc.) so let it propagate.
                 raise
 
-    # Use Python's zipfile instead of /usr/bin/unzip for cross-platform
-    # support (Windows doesn't have /usr/bin/unzip). The layout validation
-    # above already ensures the archive is safe, so we can extract directly.
-    import zipfile
-    with zipfile.ZipFile(zip_path) as zf:
-        zf.extractall(staging_dir)
-    if not staged.is_dir():
+    if sys.platform == "darwin":
+        # macOS: use /usr/bin/unzip to preserve executable bits and
+        # symlinks in the Heard.app bundle (Frameworks/ etc.).
+        result = subprocess.run(
+            ["/usr/bin/unzip", "-o", "-q", str(zip_path), "-d", str(staging_dir)],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            raise UpdateInstallError(
+                f"unzip exited {result.returncode}: {result.stderr.strip() or 'unknown'}"
+            )
+    else:
+        raise UpdateInstallError("in-app updates are macOS-only")
         raise UpdateInstallError(
             f"release zip did not contain Heard.app at the expected layout "
             f"(staging dir: {staging_dir})"
