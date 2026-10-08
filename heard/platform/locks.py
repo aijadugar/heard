@@ -116,9 +116,15 @@ class FileLock:
             pass
 
     def close(self) -> None:
+        # Idempotent: ``__exit__`` closes and ``__del__`` closes again. Without
+        # clearing ``fd`` the second close hits a *reused* descriptor number
+        # and silently drops another thread's lock.
+        if self.fd < 0:
+            return
         self.release()
+        fd, self.fd = self.fd, -1
         try:
-            os.close(self.fd)
+            os.close(fd)
         except OSError:
             pass
 
