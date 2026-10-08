@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import os
 import shlex
+import sys
 from unittest.mock import patch
 
 import pytest
@@ -280,6 +281,10 @@ def test_post_update_marker_is_one_shot(_scratch):
     assert updater.consume_post_update_marker() is None
 
 
+import pytest
+
+
+@pytest.mark.skipif(sys.platform != "darwin", reason="in-app updates are macOS-only")
 def test_unzip_app_rejects_archive_without_heard_app(tmp_path, _scratch):
     """If a release zip is malformed (missing Heard.app at the root),
     the install pipeline must error before the swap step so we don't
@@ -296,6 +301,7 @@ def test_unzip_app_rejects_archive_without_heard_app(tmp_path, _scratch):
         updater.unzip_app(zip_path, staging)
 
 
+@pytest.mark.skipif(sys.platform != "darwin", reason="in-app updates are macOS-only")
 def test_unzip_app_extracts_bundle(tmp_path, _scratch):
     """Happy path: a zip containing Heard.app/Contents/Info.plist
     extracts to ``<staging>/Heard.app`` and the returned path is what
